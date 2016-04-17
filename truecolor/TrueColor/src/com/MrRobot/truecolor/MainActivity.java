@@ -98,11 +98,13 @@ image.setOnTouchListener(new View.OnTouchListener() {
 					int g = Color.green(pixel);
 					int b = Color.blue(pixel);
 					
-					Colors c = new Colors();
+					float[] hsv = new float[3];
 					
+					Colors c = new Colors();
+					color = c.getColor(r, g, b, hsv);
 				           
 					showColor.setBackgroundColor(Color.rgb(r,g,b));
-					showColorName.setText( color  + " " + finalColorString);
+					showColorName.setText( color);
 		
 				}
 				

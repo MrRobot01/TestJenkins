@@ -15,7 +15,7 @@ public class Colors {
 		
 	}
 	
-	public String getColor(int red, int blue, int green, float[] hsv){
+	public String getColor(int red, int green, int blue, float[] hsv){
 		
 		Color.RGBToHSV(red, green, blue, hsv);
 		
