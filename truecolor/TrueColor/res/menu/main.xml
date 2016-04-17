@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.MrRobot.truecolor.MainActivity" >
+
+<item
+		android:id="@+id/Share"
+		android:title="@string/Share"
+		android:showAsAction="always"
+		android:actionProviderClass="android.widget.ShareActionProvider"
+	/>
+
+	<item
+		android:id="@+id/Save"
+		android:title="@string/Save"
+		android:icon="@drawable/save"
+		android:showAsAction="always"
+	/>
+	
+	<item
+		android:id="@+id/About"
+		android:title="@string/About"
+		android:icon="@drawable/about"
+		android:showAsAction="ifRoom"
+	/>
+	
+	<item
+		android:id="@+id/Help"
+		android:title="@string/Help"
+		android:icon="@drawable/help"
+		android:showAsAction="ifRoom"
+	/>
+
+</menu>
