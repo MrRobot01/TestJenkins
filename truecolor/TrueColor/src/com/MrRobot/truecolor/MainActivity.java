@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -51,7 +52,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-   
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); 
     
         capture = (ImageButton)findViewById(R.id.imageButton1);
         load = (ImageButton)findViewById(R.id.SaveButton);
@@ -59,9 +60,7 @@ public class MainActivity extends Activity {
         showColor = (TextView)findViewById(R.id.textView1);
         image = (ImageView)findViewById(R.id.imageView1);
           
-       // Typeface font = Typeface.createFromAsset(getAssets(), "fonts/font.otf");
-       // showColorName.setTypeface(font);
-        //
+       
         load.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -104,7 +103,7 @@ image.setOnTouchListener(new View.OnTouchListener() {
 					color = c.getColor(r, g, b, hsv);
 				           
 					showColor.setBackgroundColor(Color.rgb(r,g,b));
-					showColorName.setText( color);
+					showColorName.setText(color);
 		
 				}
 				
@@ -125,7 +124,7 @@ image.setOnTouchListener(new View.OnTouchListener() {
 		getMenuInflater().inflate(R.menu.main, menu);
 		item = menu.findItem(R.id.Share);
 		shareActionProvider = (ShareActionProvider)item.getActionProvider();
-        setIntent("Hello");
+        setIntent("192.168.0.115:9090/truecolor/");
 
 		return  true;
 		
@@ -216,11 +215,11 @@ image.setOnTouchListener(new View.OnTouchListener() {
     		break;
     	case R.id.Help:
     		Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
-    		String helpMessage= "option 1: Capture image and tap the screen to get the color" +
+    		String message1= "option 1: Capture image and tap the screen to get the color" +
     				"\noption 2: load picture from file" +
     				"\noption 3: Share the app";
     		AlertDialog.Builder BBuilder =  new AlertDialog.Builder(MainActivity.this);
-			BBuilder.setMessage(helpMessage)
+			BBuilder.setMessage(message1)
 					.setCancelable(false)
 				    .setPositiveButton("OK",new DialogInterface.OnClickListener() {
 						
@@ -232,6 +231,10 @@ image.setOnTouchListener(new View.OnTouchListener() {
 							
 						}
 					});
+			AlertDialog alert1 = BBuilder.create();
+			alert1.setTitle("About");
+			alert1.show();
+    	
     		break;
     	case R.id.Save:
     		Toast.makeText(getApplicationContext(), "Save", Toast.LENGTH_SHORT).show();
